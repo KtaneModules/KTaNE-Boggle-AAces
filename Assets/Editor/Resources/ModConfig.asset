@@ -13,7 +13,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: boggle
   title: Boggle
-  description: Find the words
+  description: 'Find the words!
+
+
+    Manual HTML: https://ktane.timwi.de/HTML/Boggle.html
+
+    Manual PDF: https://ktane.timwi.de/PDF/Boggle.pdf
+
+
+    Module by AAces'
   version: 1.0
   outputFolder: build
-  previewImage: {fileID: 2800000, guid: cb8d36dedc6bd62419d0f547e766f61c, type: 3}
+  previewImage: {fileID: 2800000, guid: 9ea9e96e991c6c5409b977a05d831aec, type: 3}
