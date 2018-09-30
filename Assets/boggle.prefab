@@ -685,6 +685,7 @@ GameObject:
   - component: {fileID: 114324995742907152}
   - component: {fileID: 114066316574645986}
   - component: {fileID: 114805883525717364}
+  - component: {fileID: 114278232311285228}
   m_Layer: 0
   m_Name: boggle
   m_TagString: Untagged
@@ -4330,6 +4331,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShaderNames:
   - GUI/KT 3D Text
+--- !u!114 &114278232311285228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1529715362576086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12e9653da45521e4eb6d5a1a1e383c9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _seed: 1
 --- !u!114 &114278621756752776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4953,6 +4966,7 @@ MonoBehaviour:
   newAudio: {fileID: 114355478090441996}
   module: {fileID: 114324995742907152}
   info: {fileID: 114514910218088066}
+  RuleSeedable: {fileID: 114278232311285228}
   btns:
   - {fileID: 114040238018698404}
   - {fileID: 114744940822014020}

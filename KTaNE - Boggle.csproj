@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="Assets\boggle.cs" />
     <Compile Include="Assets\KMBombInfoExtensions.cs" />
+    <Compile Include="Assets\KMRuleSeedable.cs" />
     <Compile Include="Assets\TestHarness\TestHarness.cs" />
     <Compile Include="Assets\TestHarness\TestHighlightable.cs" />
     <Compile Include="Assets\TestHarness\TestSelectable.cs" />
