@@ -4342,7 +4342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e9653da45521e4eb6d5a1a1e383c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _seed: 1
+  _seed: 9876
 --- !u!114 &114278621756752776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4963,27 +4963,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baf95c0323c26564caece9708f1d3564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newAudio: {fileID: 114355478090441996}
-  module: {fileID: 114324995742907152}
-  info: {fileID: 114514910218088066}
-  RuleSeedable: {fileID: 114278232311285228}
-  btns:
-  - {fileID: 114040238018698404}
-  - {fileID: 114744940822014020}
-  - {fileID: 114328450979780352}
-  - {fileID: 114390823895396518}
-  - {fileID: 114199835818560198}
-  - {fileID: 114809796666050630}
-  - {fileID: 114466862048339708}
-  - {fileID: 114809141017486956}
-  - {fileID: 114351834605215650}
-  - {fileID: 114060565973916472}
-  - {fileID: 114569189362295398}
-  - {fileID: 114390054370199788}
-  - {fileID: 114603580746378698}
-  - {fileID: 114428072844278730}
-  - {fileID: 114848443931295878}
-  - {fileID: 114185586507021506}
   btnMesh:
   - {fileID: 23041463379540354}
   - {fileID: 23699166585332432}
@@ -5001,6 +4980,23 @@ MonoBehaviour:
   - {fileID: 23107983671228976}
   - {fileID: 23659991655609060}
   - {fileID: 23754733844658114}
+  btns:
+  - {fileID: 114040238018698404}
+  - {fileID: 114744940822014020}
+  - {fileID: 114328450979780352}
+  - {fileID: 114390823895396518}
+  - {fileID: 114199835818560198}
+  - {fileID: 114809796666050630}
+  - {fileID: 114466862048339708}
+  - {fileID: 114809141017486956}
+  - {fileID: 114351834605215650}
+  - {fileID: 114060565973916472}
+  - {fileID: 114569189362295398}
+  - {fileID: 114390054370199788}
+  - {fileID: 114603580746378698}
+  - {fileID: 114428072844278730}
+  - {fileID: 114848443931295878}
+  - {fileID: 114185586507021506}
   btnsText:
   - {fileID: 1606837522639856}
   - {fileID: 1911578409620050}
@@ -5018,10 +5014,14 @@ MonoBehaviour:
   - {fileID: 1696789652633168}
   - {fileID: 1760086004785504}
   - {fileID: 1267236028165080}
-  screen: {fileID: 102430067391421634}
   canPressMat: {fileID: 2100000, guid: 15cf191129c11194abc3a566da61cb75, type: 2}
   defaultMat: {fileID: 2100000, guid: 17fd9d52f5cde16439cde71632ae1115, type: 2}
   selectedMat: {fileID: 2100000, guid: 96125c80bc8712441a4b1d5124e004b9, type: 2}
+  info: {fileID: 114514910218088066}
+  module: {fileID: 114324995742907152}
+  newAudio: {fileID: 114355478090441996}
+  RuleSeedable: {fileID: 114278232311285228}
+  screen: {fileID: 102430067391421634}
 --- !u!114 &114809141017486956
 MonoBehaviour:
   m_ObjectHideFlags: 1

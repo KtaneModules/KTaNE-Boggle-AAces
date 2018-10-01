@@ -142,6 +142,7 @@ public class boggle : MonoBehaviour {
     private void setupButtons() {
         verOffset = Random.Range(0, 7);
         horOffset = Random.Range(0, 7);
+    TryAgain:
         mappedText = new[,] {
             {
                 btnsText[0].GetComponentInChildren<TextMesh>(), btnsText[1].GetComponentInChildren<TextMesh>(),
@@ -179,12 +180,77 @@ public class boggle : MonoBehaviour {
             vis[3] = Random.Range(0, 16);
         } while (vis[3] == vis[0] || vis[3] == vis[1] || vis[3] == vis[2]);
 
+        for (int h = 0; h < 7; h++) {
+            for (int v = 0; v < 7; v++) {
+
+                if (h!=horOffset && v!=verOffset && letterMap[getV(vis[0]) + v, getH(vis[0]) + h].ToString() == mappedText[getV(vis[0]), getH(vis[0])].text && letterMap[getV(vis[1]) + v, getH(vis[1]) + h].ToString() == mappedText[getV(vis[1]), getH(vis[1])].text && letterMap[getV(vis[2]) + v, getH(vis[2]) + h].ToString() == mappedText[getV(vis[2]), getH(vis[2])].text && letterMap[getV(vis[3]) + v, getH(vis[3]) + h].ToString() == mappedText[getV(vis[3]), getH(vis[3])].text) {
+                    goto TryAgain;
+                }
+            }
+        }
+
         btnsText[vis[0]].SetActive(true);
         btnsText[vis[1]].SetActive(true);
         btnsText[vis[2]].SetActive(true);
         btnsText[vis[3]].SetActive(true);
         Debug.LogFormat("[Boggle #{0}] The vertical offset is {1}. The horizontal offset is {2}.", _moduleId, verOffset, horOffset);
         Debug.LogFormat("[Boggle #{0}] The visible letters' buttons are {1}, {2}, {3}, and {4}.", _moduleId, vis[0], vis[1], vis[2], vis[3]);
+    }
+
+    private int getH(int index) {
+        switch (index) {
+            case 0:
+            case 4:
+            case 8:
+            case 12:
+                return 0;
+            case 1:
+            case 5:
+            case 9:
+            case 13:
+                return 1;
+            case 2:
+            case 6:
+            case 10:
+            case 14:
+                return 2;
+            case 3:
+            case 7:
+            case 11:
+            case 15:
+                return 3;
+            default:
+                return 0;
+        }
+    }
+
+    private int getV(int index)
+    {
+        switch (index)
+        {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+                return 0;
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+                return 1;
+            case 8:
+            case 9:
+            case 10:
+            case 11:
+                return 2;
+            case 12:
+            case 13:
+            case 14:
+            case 15:
+                return 3;
+            default:
+                return 0;
+        }
     }
 
     private void setupLookup() {
