@@ -24,8 +24,9 @@ public class boggle : MonoBehaviour {
     private readonly List<int> pressedButtons = new List<int>();
     private readonly List<string> submitted = new List<string>();
 
+    public String visableLetters = "";
 
-    private bool _isSolved, _lightsOn;
+    private bool _isSolved, _lightsOn, solveIgnore = false;
     private int _moduleId;
 
     public MeshRenderer[] btnMesh;
@@ -195,6 +196,9 @@ public class boggle : MonoBehaviour {
         btnsText[vis[3]].SetActive(true);
         Debug.LogFormat("[Boggle #{0}] The vertical offset is {1}. The horizontal offset is {2}.", _moduleId, verOffset, horOffset);
         Debug.LogFormat("[Boggle #{0}] The visible letters' buttons are {1}, {2}, {3}, and {4}.", _moduleId, vis[0], vis[1], vis[2], vis[3]);
+
+        //For Souv:
+        visableLetters = btnsText[vis[0]].GetComponentInChildren<TextMesh>().text + btnsText[vis[1]].GetComponentInChildren<TextMesh>().text + btnsText[vis[2]].GetComponentInChildren<TextMesh>().text + btnsText[vis[3]].GetComponentInChildren<TextMesh>().text;
     }
 
     private int getH(int index) {
@@ -283,6 +287,7 @@ public class boggle : MonoBehaviour {
             Debug.LogFormat("[Boggle #{0}] The button at index {1} is not a letter that could have been pressed!", _moduleId, btnIndex);
             Debug.LogFormat("[Boggle #{0}] If you feel that this strike is an error, do not hesitate to contact @AAces#0908 on discord ASAP. Be sure to have a copy of this log file.", _moduleId);
             reset();
+            solveIgnore = true;
             return;
         }
 
@@ -291,8 +296,13 @@ public class boggle : MonoBehaviour {
     }
 
     private void submit() {
+        if (solveIgnore){
+            solveIgnore = false;
+            return;
+        }
         var word = currentInput.ToLowerInvariant().Replace("q", "qu");
         Debug.LogFormat("[Boggle #{0}] Attempting to submit {1}.", _moduleId, word);
+
         if (!wordList.Contains(word)) {
             module.HandleStrike();
             Debug.LogFormat("[Boggle #{0}] {1} is not a valid word!", _moduleId, word);
@@ -434,8 +444,10 @@ public class boggle : MonoBehaviour {
 
     private IEnumerator end() {
         foreach (var obj in btnsText) {
-            obj.SetActive(true);
-            yield return new WaitForSeconds(0.1f);
+            if (!obj.activeSelf) {
+                obj.SetActive(true);
+                yield return new WaitForSeconds(0.1f);
+            }
         }
     }
 

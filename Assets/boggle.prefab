@@ -4342,7 +4342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e9653da45521e4eb6d5a1a1e383c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _seed: 9876
+  _seed: 1
 --- !u!114 &114278621756752776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4963,6 +4963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baf95c0323c26564caece9708f1d3564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  visableLetters: 
   btnMesh:
   - {fileID: 23041463379540354}
   - {fileID: 23699166585332432}
