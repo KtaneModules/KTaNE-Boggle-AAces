@@ -26,7 +26,7 @@ public class boggle : MonoBehaviour {
 
     public String visableLetters = "";
 
-    private bool _isSolved, _lightsOn, solveIgnore = false;
+    private bool _isSolved, _lightsOn, solveIgnore = false, tpStrike = false;
     private int _moduleId;
 
     public MeshRenderer[] btnMesh;
@@ -284,6 +284,7 @@ public class boggle : MonoBehaviour {
             calculateCanPress(btnIndex);
         } else {
             module.HandleStrike();
+            tpStrike = true;
             Debug.LogFormat("[Boggle #{0}] The button at index {1} is not a letter that could have been pressed!", _moduleId, btnIndex);
             Debug.LogFormat("[Boggle #{0}] If you feel that this strike is an error, do not hesitate to contact @AAces#0908 on discord ASAP. Be sure to have a copy of this log file.", _moduleId);
             reset();
@@ -451,6 +452,10 @@ public class boggle : MonoBehaviour {
         }
     }
 
+    void resetTpStrike() {
+        tpStrike = false;
+    }
+
 #pragma warning disable 414
 
     private readonly string TwitchHelpMessage =
@@ -458,14 +463,14 @@ public class boggle : MonoBehaviour {
 
 #pragma warning restore 414
 
-    private KMSelectable[] ProcessTwitchCommand(string command) {
+    IEnumerator ProcessTwitchCommand(string command)
+    {
         command = command.ToLowerInvariant();
-
         var m = Regex.Match(command, @"^(?:press|submit)((?: +([abcd][1234]))+) *$");
 
         if (!m.Success)
 
-            return null;
+            yield break;
 
         var buttons = new Dictionary<string, KMSelectable> {
             {"a1", btns[0]},
@@ -488,13 +493,30 @@ public class boggle : MonoBehaviour {
 
         var split = command.ToLowerInvariant().Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
         var selectables = new List<KMSelectable>();
+        
+        yield return null;
+
+        yield return new WaitUntil(() => pressing == false);
+
+        yield return "solve";
+        yield return "strike";
+
 
         foreach (var input in split) {
             if (input == "press" || input == "submit") continue;
             selectables.Add(buttons[input]);
         }
 
-        return selectables.ToArray();
+        foreach (var x in selectables) {
+            x.OnInteract();
+            if (tpStrike) {
+                resetTpStrike();
+                yield break;
+            }
+        }
+
+
+
     }
 }
 
